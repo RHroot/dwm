@@ -1,0 +1,14 @@
+# build artifacts
+dwm
+*.o
+
+# generated config
+config.h
+
+# archives
+*.tar
+*.gz
+
+# temporary files
+*.swp
+*.swo
