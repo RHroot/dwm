@@ -12,10 +12,4 @@ pkgs.mkShell {
     xorg.xinit
     xorg.xsetroot
   ];
-
-  shellHook = ''
-    if [ -n "$SHELL" ] && [ "$0" != "$SHELL" ]; then
-      exec "$SHELL"
-    fi
-  '';
 }
