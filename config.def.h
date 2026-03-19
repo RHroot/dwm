@@ -70,10 +70,6 @@ static const char *mybrowserwork[] = {"brave", "--profile-directory=Profile 1",
 static const char *mymenu[] = {"bemenu-run", "-l",
                                "10", // number of lines
                                "--fn",       "FiraCode Nerd Font 20",
-                               "--nb",       "#1e1e2e",
-                               "--nf",       "#cdd6f4",
-                               "--sb",       "#89b4fa",
-                               "--sf",       "#1e1e2e",
                                NULL};
 
 static const Key keys[] = {
