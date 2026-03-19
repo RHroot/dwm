@@ -63,25 +63,27 @@ static const Layout layouts[] = {
   }
 
 /* commands */
-static char dmenumon[2] =
-    "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = {
-    "dmenu_run", "-m",      dmenumon, "-fn",    dmenufont, "-nb",     col_gray1,
-    "-nf",       col_gray3, "-sb",    col_cyan, "-sf",     col_gray4, NULL};
-static const char *termcmd[] = {"st", NULL};
 static const char *myterminal[] = {"alacritty", NULL};
-static const char *mymenu[] = {
-    "bemenu-run", "-l",           "10", // number of lines
-    "--fn",       "monospace 12", "--nb", "#1e1e2e", "--nf", "#cdd6f4",
-    "--sb",       "#89b4fa",      "--sf", "#1e1e2e", NULL};
+static const char *mybrowserpersonal[] = {"brave",
+                                          "--profile-directory='Default", NULL};
+static const char *mybrowserwork[] = {"brave", "--profile-directory='Profile 1",
+                                      NULL};
+static const char *mymenu[] = {"bemenu-run", "-l",
+                               "10", // number of lines
+                               "--fn",       "FiraCode Nerd Font 12",
+                               "--nb",       "#1e1e2e",
+                               "--nf",       "#cdd6f4",
+                               "--sb",       "#89b4fa",
+                               "--sf",       "#1e1e2e",
+                               NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
     {MODKEY, XK_Return, spawn, {.v = myterminal}},
     {MODKEY, XK_space, spawn, {.v = mymenu}},
-    {MODKEY, XK_p, spawn, {.v = dmenucmd}},
-    {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
-    {MODKEY, XK_b, togglebar, {0}},
+    {MODKEY, XK_b, spawn, {.v = mybrowserpersonal}},
+    {MODKEY | ShiftMask, XK_b, spawn, {.v = mybrowserwork}},
+    {MODKEY | ControlMask, XK_b, togglebar, {0}},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
     {MODKEY, XK_i, incnmaster, {.i = +1}},
