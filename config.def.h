@@ -51,6 +51,7 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod4Mask
+#define ALTKEY Mod1Mask
 #define TAGKEYS(KEY, TAG)                                                      \
   {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
       {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
@@ -85,9 +86,13 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_v, spawn, SHCMD("pavucontrol")},
     {MODKEY, XK_v, spawn,
      SHCMD("CM_LAUNCHER=bemenu CM_LAUNCHER_OPTS='-i' clipmenu")},
-    {MODKEY | ShiftMask, XK_f, togglefullscr, {0}},
-    {MODKEY, XK_j, focusstack, {.i = +1}},
-    {MODKEY, XK_k, focusstack, {.i = -1}},
+    {MODKEY, XK_f, togglefullscr, {0}},
+    {MODKEY, XK_k, viewnext, {0}},
+    {MODKEY, XK_j, viewprev, {0}},
+    {MODKEY | ShiftMask, XK_Right, tagtonext, {0}},
+    {MODKEY | ShiftMask, XK_Left, tagtoprev, {0}},
+    {ALTKEY, XK_j, focusstack, {.i = +1}},
+    {ALTKEY, XK_k, focusstack, {.i = -1}},
     {MODKEY, XK_i, incnmaster, {.i = +1}},
     {MODKEY, XK_d, incnmaster, {.i = -1}},
     {MODKEY, XK_h, setmfact, {.f = -0.05}},
