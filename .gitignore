@@ -12,3 +12,5 @@ config.h
 # temporary files
 *.swp
 *.swo
+*.rej
+*.orig

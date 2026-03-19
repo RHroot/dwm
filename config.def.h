@@ -1,4 +1,6 @@
-/* See LICENSE file for copyright and license details. */
+#include <X11/XF86keysym.h>
+#include <X11/Xlib.h>
+#include <X11/keysym.h>
 
 /* appearance */
 static const unsigned int borderpx = 1; /* border pixel of windows */
@@ -80,6 +82,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_b, spawn, {.v = mybrowserwork}},
     {MODKEY, XK_q, killclient, {0}},
     {MODKEY | ShiftMask, XK_p, togglebar, {0}},
+    {MODKEY | ShiftMask, XK_v, spawn, SHCMD("pavucontrol")},
     {MODKEY, XK_v, spawn,
      SHCMD("CM_LAUNCHER=bemenu CM_LAUNCHER_OPTS='-i' clipmenu")},
     {MODKEY, XK_j, focusstack, {.i = +1}},
@@ -101,16 +104,26 @@ static const Key keys[] = {
     {MODKEY, XK_period, focusmon, {.i = +1}},
     {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
+    {MODKEY | ShiftMask, XK_q, quit, {0}},
+    {MODKEY | ControlMask, XK_q, quit, {1}},
+    {0, XF86XK_MonBrightnessUp, spawn, SHCMD("brightnessctl set +10%")},
+    {0, XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl set 10%-")},
+    {0, XF86XK_AudioRaiseVolume, spawn,
+     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+")},
+    {0, XF86XK_AudioLowerVolume, spawn,
+     SHCMD("wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-")},
+    {0, XF86XK_AudioMute, spawn,
+     SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")},
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
-            TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
-};
+            TAGKEYS(XK_9, 8)};
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
  * ClkClientWin, or ClkRootWin */
 static const Button buttons[] = {
-    /* click                event mask      button          function argument */
+    /* click                event mask      button          function
+       argument */
     {ClkLtSymbol, 0, Button1, setlayout, {0}},
     {ClkLtSymbol, 0, Button3, setlayout, {.v = &layouts[2]}},
     {ClkWinTitle, 0, Button2, zoom, {0}},
