@@ -67,8 +67,22 @@ static const Layout layouts[] = {
 /* commands */
 static const char *myterminal[] = {"alacritty", NULL};
 static const char *mybrowserpersonal[] = {"brave",
-                                          "--profile-directory=Default", NULL};
-static const char *mybrowserwork[] = {"brave", "--profile-directory=Profile 1",
+                                          "--profile-directory=Default",
+                                          "--enable-gpu",
+                                          "--ignore-gpu-blocklist",
+                                          "--enable-zero-copy",
+                                          "--enable-gpu-rasterization",
+                                          "--enable-features=SmoothScrolling",
+                                          "--ozone-platform=x11",
+                                          NULL};
+static const char *mybrowserwork[] = {"brave",
+                                      "--profile-directory=Profile 1",
+                                      "--enable-gpu",
+                                      "--ignore-gpu-blocklist",
+                                      "--enable-zero-copy",
+                                      "--enable-gpu-rasterization",
+                                      "--enable-features=SmoothScrolling",
+                                      "--ozone-platform=x11",
                                       NULL};
 static const char *mymenu[] = {"bemenu-run", "-l",
                                "10", // number of lines
