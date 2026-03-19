@@ -64,12 +64,12 @@ static const Layout layouts[] = {
 /* commands */
 static const char *myterminal[] = {"alacritty", NULL};
 static const char *mybrowserpersonal[] = {"brave",
-                                          "--profile-directory='Default", NULL};
-static const char *mybrowserwork[] = {"brave", "--profile-directory='Profile 1",
+                                          "--profile-directory=Default", NULL};
+static const char *mybrowserwork[] = {"brave", "--profile-directory=Profile 1",
                                       NULL};
 static const char *mymenu[] = {"bemenu-run", "-l",
                                "10", // number of lines
-                               "--fn",       "FiraCode Nerd Font 12",
+                               "--fn",       "FiraCode Nerd Font 20",
                                "--nb",       "#1e1e2e",
                                "--nf",       "#cdd6f4",
                                "--sb",       "#89b4fa",
@@ -82,7 +82,10 @@ static const Key keys[] = {
     {MODKEY, XK_space, spawn, {.v = mymenu}},
     {MODKEY, XK_b, spawn, {.v = mybrowserpersonal}},
     {MODKEY | ShiftMask, XK_b, spawn, {.v = mybrowserwork}},
-    {MODKEY | ControlMask, XK_b, togglebar, {0}},
+    {MODKEY, XK_q, killclient, {0}},
+    {MODKEY | ShiftMask, XK_p, togglebar, {0}},
+    {MODKEY, XK_v, spawn,
+     SHCMD("CM_LAUNCHER=bemenu CM_LAUNCHER_OPTS='-i' clipmenu")},
     {MODKEY, XK_j, focusstack, {.i = +1}},
     {MODKEY, XK_k, focusstack, {.i = -1}},
     {MODKEY, XK_i, incnmaster, {.i = +1}},
@@ -91,7 +94,6 @@ static const Key keys[] = {
     {MODKEY, XK_l, setmfact, {.f = +0.05}},
     {MODKEY | ControlMask, XK_Return, zoom, {0}},
     {MODKEY, XK_Tab, view, {0}},
-    {MODKEY | ShiftMask, XK_c, killclient, {0}},
     {MODKEY, XK_t, setlayout, {.v = &layouts[0]}},
     {MODKEY, XK_f, setlayout, {.v = &layouts[1]}},
     {MODKEY, XK_m, setlayout, {.v = &layouts[2]}},
