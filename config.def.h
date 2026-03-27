@@ -70,8 +70,7 @@ static const char *mybrowserpersonal[] = {
     "brave", "--profile-directory=Default", "--ozone-platform=x11", NULL};
 static const char *mybrowserwork[] = {"brave", "--profile-directory=Profile 1",
                                       "--ozone-platform=x11", NULL};
-static const char *mymenu[] = {
-    "bemenu-run", "-l", "10", "--fn", "FiraCode Nerd Font 20", NULL};
+static const char *mymenu[] = {"rofi", "show", "-run", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
