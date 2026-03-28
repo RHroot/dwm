@@ -298,6 +298,7 @@ static void (*handler[LASTEvent])(XEvent *) = {
 static Atom wmatom[WMLast], netatom[NetLast];
 static int restart = 0;
 static int running = 1;
+static unsigned int lasttag = 0;
 static Cur *cursor[CurLast];
 static Clr **scheme;
 static Display *dpy;
@@ -2093,11 +2094,30 @@ void updatewmhints(Client *c) {
 }
 
 void view(const Arg *arg) {
-  if ((arg->ui & TAGMASK) == selmon->tagset[selmon->seltags])
+  unsigned int newtag = arg->ui & TAGMASK;
+
+  if (!newtag)
     return;
-  selmon->seltags ^= 1; /* toggle sel tagset */
-  if (arg->ui & TAGMASK)
-    selmon->tagset[selmon->seltags] = arg->ui & TAGMASK;
+
+  unsigned int curtag = selmon->tagset[selmon->seltags];
+
+  /* If same tag pressed → go back */
+  if (newtag == curtag) {
+    if (lasttag) {
+      selmon->seltags ^= 1;
+      selmon->tagset[selmon->seltags] = lasttag;
+      focus(NULL);
+      arrange(selmon);
+    }
+    return;
+  }
+
+  /* Save current tag before switching */
+  lasttag = curtag;
+
+  selmon->seltags ^= 1;
+  selmon->tagset[selmon->seltags] = newtag;
+
   focus(NULL);
   arrange(selmon);
 }
