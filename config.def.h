@@ -13,10 +13,11 @@ static const char col_gray2[] = "#444444";
 static const char col_gray3[] = "#bbbbbb";
 static const char col_gray4[] = "#eeeeee";
 static const char col_cyan[] = "#005577";
+static const char col_magenta[] = "#8C1946";
 static const char *colors[][3] = {
     /*               fg         bg         border   */
     [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
-    [SchemeSel] = {col_gray4, col_cyan, col_cyan},
+    [SchemeSel] = {col_gray4, col_magenta, col_magenta},
 };
 
 /* tagging */
@@ -70,7 +71,7 @@ static const char *mybrowserpersonal[] = {
     "brave", "--profile-directory=Default", "--ozone-platform=x11", NULL};
 static const char *mybrowserwork[] = {"brave", "--profile-directory=Profile 1",
                                       "--ozone-platform=x11", NULL};
-static const char *mymenu[] = {"rofi", "show", "-run", NULL};
+static const char *mymenu[] = {"rofi", "-show", "run", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
@@ -82,7 +83,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_p, togglebar, {0}},
     {MODKEY | ShiftMask, XK_v, spawn, SHCMD("pavucontrol")},
     {MODKEY, XK_v, spawn,
-     SHCMD("CM_LAUNCHER=bemenu CM_LAUNCHER_OPTS='-i' clipmenu")},
+     SHCMD("CM_LAUNCHER=rofi CM_LAUNCHER_OPTS='-i' clipmenu")},
     {MODKEY, XK_f, togglefullscr, {0}},
     {MODKEY, XK_k, viewnext, {0}},
     {MODKEY, XK_j, viewprev, {0}},
