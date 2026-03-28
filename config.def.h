@@ -9,20 +9,19 @@ static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
 static const char *fonts[] = {"FiraCode Nerd Font:size=14"};
 /* custom colors */
-static const char col_bg[] = "#0b0f14";
-static const char col_bg_alt[] = "#121821";
-static const char col_border[] = "#1c2530";
+static const char col_bg[] = "#0a0a0a";
+static const char col_bg_alt[] = "#151515";
 
-static const char col_fg_dim[] = "#6c7a89";
-static const char col_fg[] = "#d4d4d4";
+static const char col_fg_dim[] = "#555555";
+static const char col_fg[] = "#eeeeee";
 
-static const char col_magenta[] = "#7c2f5a";    // main accent
-static const char col_magenta_hi[] = "#a64d79"; // highlight
+static const char col_magenta[] = "#8a2a5a";
+static const char col_magenta_hi[] = "#c94f9d";
 
-static const char col_blue[] = "#2a3f5f";
+static const char col_blue[] = "#2d4f67";
 
 static const char *colors[][3] = {
-    [SchemeNorm] = {col_fg_dim, col_bg, col_border},
+    [SchemeNorm] = {col_fg_dim, col_bg, "#222222"},
     [SchemeOcc] = {col_fg, col_bg_alt, col_blue},
     [SchemeSel] = {col_fg, col_magenta, col_magenta_hi},
 };
