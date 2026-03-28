@@ -1,5 +1,4 @@
 # build artifacts
-dwm
 *.o
 
 # generated config
@@ -14,3 +13,8 @@ config.h
 *.swo
 *.rej
 *.orig
+
+# slstatus
+slstatus-*.tar.gz
+*.out
+*.log
