@@ -108,8 +108,11 @@ static const Key keys[] = {
     {MODKEY, XK_period, focusmon, {.i = +1}},
     {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
-    {MODKEY | ShiftMask, XK_q, quit, {0}},
-    {MODKEY | ControlMask, XK_q, quit, {1}},
+    {MODKEY | ShiftMask,
+     XK_r,
+     quit,
+     {1}}, /* this is for reloading dwm without quitting the X session */
+    {MODKEY | ControlMask, XK_q, quit, {0}},
     {0, XF86XK_MonBrightnessUp, spawn, SHCMD("brightnessctl set +10%")},
     {0, XF86XK_MonBrightnessDown, spawn, SHCMD("brightnessctl set 10%-")},
     {0, XF86XK_AudioRaiseVolume, spawn,
