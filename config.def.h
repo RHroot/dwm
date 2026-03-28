@@ -84,8 +84,8 @@ static const Key keys[] = {
     {MODKEY, XK_j, viewprev, {0}},
     {MODKEY, XK_k, viewnext, {0}},
     {ALTKEY | ShiftMask, XK_space, spawn,
-     SHCMD("$HOME/env/nixos/modules/WM/wset")} {
-        MODKEY | ShiftMask, XK_Right, tagtonext, {0}},
+     SHCMD("$HOME/env/nixos/modules/WM/wset")},
+    {MODKEY | ShiftMask, XK_Right, tagtonext, {0}},
     {MODKEY | ShiftMask, XK_Left, tagtoprev, {0}},
     {ALTKEY, XK_j, focusstack, {.i = +1}},
     {ALTKEY, XK_k, focusstack, {.i = -1}},
