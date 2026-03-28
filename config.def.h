@@ -11,9 +11,9 @@ static const char *fonts[] = {"FiraCode Nerd Font:size=14"};
 /* custom colors */
 #include "config_colors.h"
 static const char *colors[][3] = {
-    [SchemeNorm] = {col_fg_dim, col_bg, col_border},
-    [SchemeOcc] = {col_fg, col_bg_alt, col_border},
-    [SchemeSel] = {col_fg, col_accent, col_accent},
+    [SchemeNorm] = {col_fg_dim, col_bg, col_bg},
+    [SchemeOcc] = {col_fg, col_bg_alt, col_bg_alt},
+    [SchemeSel] = {col_fg, col_bg_sel, col_accent},
 };
 
 /* tagging */
