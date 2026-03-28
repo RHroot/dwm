@@ -65,9 +65,35 @@ static const Layout layouts[] = {
 /* commands */
 static const char *myterminal[] = {"alacritty", NULL};
 static const char *mybrowserpersonal[] = {
-    "brave", "--profile-directory=Default", "--ozone-platform=x11", NULL};
-static const char *mybrowserwork[] = {"brave", "--profile-directory=Profile 1",
-                                      "--ozone-platform=x11", NULL};
+    "env",
+    "DRI_PRIME=0",
+    "LIBVA_DRIVER_NAME=iHD",
+    "brave",
+    "--profile-directory=Default",
+    "--use-gl=desktop",
+    "--enable-gpu-rasterization",
+    "--enable-zero-copy",
+    "--enable-accelerated-video-decode",
+    "--enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks",
+    "--ignore-gpu-blocklist",
+    "--disable-features=UseChromeOSDirectVideoDecoder",
+    "--smooth-scrolling",
+    NULL};
+static const char *mybrowserwork[] = {
+    "env",
+    "DRI_PRIME=0",
+    "LIBVA_DRIVER_NAME=iHD",
+    "brave",
+    "--profile-directory=Profile 1",
+    "--use-gl=desktop",
+    "--enable-gpu-rasterization",
+    "--enable-zero-copy",
+    "--enable-accelerated-video-decode",
+    "--enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks",
+    "--ignore-gpu-blocklist",
+    "--disable-features=UseChromeOSDirectVideoDecoder",
+    "--smooth-scrolling",
+    NULL};
 static const char *mymenu[] = {"rofi", "-show", "run", NULL};
 
 static const Key keys[] = {
