@@ -64,42 +64,18 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *myterminal[] = {"alacritty", NULL};
-static const char *mybrowserpersonal[] = {
-    "env",
-    "DRI_PRIME=0",
-    "LIBVA_DRIVER_NAME=iHD",
-    "brave",
-    "--profile-directory=Default",
-    "--use-gl=desktop",
-    "--enable-gpu-rasterization",
-    "--enable-zero-copy",
-    "--enable-accelerated-video-decode",
-    "--enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks",
-    "--ignore-gpu-blocklist",
-    "--disable-features=UseChromeOSDirectVideoDecoder",
-    "--smooth-scrolling",
-    NULL};
-static const char *mybrowserwork[] = {
-    "env",
-    "DRI_PRIME=0",
-    "LIBVA_DRIVER_NAME=iHD",
-    "brave",
-    "--profile-directory=Profile 1",
-    "--use-gl=desktop",
-    "--enable-gpu-rasterization",
-    "--enable-zero-copy",
-    "--enable-accelerated-video-decode",
-    "--enable-features=VaapiVideoDecoder,VaapiIgnoreDriverChecks",
-    "--ignore-gpu-blocklist",
-    "--disable-features=UseChromeOSDirectVideoDecoder",
-    "--smooth-scrolling",
-    NULL};
+static const char *mybrowserpersonal[] = {"brave",
+                                          "--profile-directory=Default", NULL};
+static const char *mybrowserwork[] = {"brave", "--profile-directory=Profile 1",
+                                      NULL};
 static const char *mymenu[] = {"rofi", "-show", "run", NULL};
+static const char *mybettermenu[] = {"rofi", "-show", "drun", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
     {MODKEY, XK_Return, spawn, {.v = myterminal}},
     {MODKEY, XK_space, spawn, {.v = mymenu}},
+    {MODKEY | ShiftMask, XK_space, spawn, {.v = mybettermenu}},
     {MODKEY, XK_b, spawn, {.v = mybrowserpersonal}},
     {MODKEY | ShiftMask, XK_b, spawn, {.v = mybrowserwork}},
     {MODKEY, XK_q, killclient, {0}},
@@ -123,8 +99,8 @@ static const Key keys[] = {
     {MODKEY, XK_Tab, view, {0}},
     {MODKEY | ShiftMask, XK_t, setlayout, {.v = &layouts[0]}},
     {MODKEY | ControlMask, XK_f, setlayout, {.v = &layouts[1]}},
-    {MODKEY | ShiftMask, XK_m, setlayout, {.v = &layouts[2]}},
-    {MODKEY | ShiftMask, XK_space, setlayout, {0}},
+    {MODKEY | ControlMask, XK_m, setlayout, {.v = &layouts[2]}},
+    {MODKEY | ControlMask, XK_space, setlayout, {0}},
     {MODKEY | ShiftMask, XK_f, togglefloating, {0}},
     {MODKEY | ShiftMask, XK_minus, tag, {.ui = ~0}},
     {MODKEY, XK_comma, focusmon, {.i = -1}},
