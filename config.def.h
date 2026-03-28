@@ -21,7 +21,7 @@ static const char *colors[][3] = {
 };
 
 /* tagging */
-static const char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9"};
+static const char *tags[] = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -101,8 +101,7 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_m, setlayout, {.v = &layouts[2]}},
     {MODKEY | ShiftMask, XK_space, setlayout, {0}},
     {MODKEY | ShiftMask, XK_f, togglefloating, {0}},
-    {MODKEY, XK_0, view, {.ui = ~0}},
-    {MODKEY | ShiftMask, XK_0, tag, {.ui = ~0}},
+    {MODKEY | ShiftMask, XK_minus, tag, {.ui = ~0}},
     {MODKEY, XK_comma, focusmon, {.i = -1}},
     {MODKEY, XK_period, focusmon, {.i = +1}},
     {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
@@ -122,7 +121,7 @@ static const Key keys[] = {
      SHCMD("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle")},
     TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
         TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
-            TAGKEYS(XK_9, 8)};
+            TAGKEYS(XK_9, 8) TAGKEYS(XK_0, 9)};
 
 /* button definitions */
 /* click can be ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
