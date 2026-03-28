@@ -3,6 +3,7 @@
 
 # generated config
 config.h
+config_colors.h
 
 # archives
 *.tar

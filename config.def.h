@@ -9,19 +9,11 @@ static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
 static const char *fonts[] = {"FiraCode Nerd Font:size=14"};
 /* custom colors */
-static const char col_bg[] = "#0e1116";
-static const char col_bg_alt[] = "#141922";
-
-static const char col_fg_dim[] = "#5f6a7a";
-static const char col_fg[] = "#cfd6df";
-
-static const char col_magenta[] = "#6a2c52";
-static const char col_blue[] = "#243447";
-
+#include "config_colors.h"
 static const char *colors[][3] = {
-    [SchemeNorm] = {col_fg_dim, col_bg, "#1a222c"},
-    [SchemeOcc] = {col_fg, col_bg_alt, col_blue},
-    [SchemeSel] = {col_fg, col_magenta, col_magenta},
+    [SchemeNorm] = {col_fg_dim, col_bg, col_border},
+    [SchemeOcc] = {col_fg, col_bg_alt, col_border},
+    [SchemeSel] = {col_fg, col_accent, col_accent},
 };
 
 /* tagging */
