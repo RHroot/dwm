@@ -81,9 +81,11 @@ static const Key keys[] = {
     {MODKEY | ShiftMask, XK_v, spawn, SHCMD("pavucontrol")},
     {MODKEY, XK_v, spawn, SHCMD("CM_LAUNCHER=rofi clipmenu")},
     {MODKEY, XK_f, togglefullscr, {0}},
-    {MODKEY, XK_k, viewnext, {0}},
     {MODKEY, XK_j, viewprev, {0}},
-    {MODKEY | ShiftMask, XK_Right, tagtonext, {0}},
+    {MODKEY, XK_k, viewnext, {0}},
+    {ALTKEY | ShiftMask, XK_space, spawn,
+     SHCMD("$HOME/env/nixos/modules/WM/wset")} {
+        MODKEY | ShiftMask, XK_Right, tagtonext, {0}},
     {MODKEY | ShiftMask, XK_Left, tagtoprev, {0}},
     {ALTKEY, XK_j, focusstack, {.i = +1}},
     {ALTKEY, XK_k, focusstack, {.i = -1}},
