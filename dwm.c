@@ -1185,17 +1185,21 @@ unsigned int nexttag(void) {
   if (!c)
     return seltag;
 
-  /* skip vacant tags */
+  /* collect non-empty tags */
   do {
     usedtags |= c->tags;
     c = c->next;
   } while (c);
 
-  do {
-    seltag = seltag == (1 << (LENGTH(tags) - 1)) ? 1 : seltag << 1;
-  } while (!(seltag & usedtags));
+  /* move right without wrapping */
+  unsigned int cur = seltag;
+  while (cur < (1 << (LENGTH(tags) - 1))) {
+    cur <<= 1;
+    if (cur & usedtags)
+      return cur;
+  }
 
-  return seltag;
+  return seltag; // stop at last tag
 }
 
 Client *nexttiled(Client *c) {
@@ -1215,20 +1219,23 @@ unsigned int prevtag(void) {
   unsigned int seltag = selmon->tagset[selmon->seltags];
   unsigned int usedtags = 0;
   Client *c = selmon->clients;
+
   if (!c)
     return seltag;
 
-  /* skip vacant tags */
   do {
     usedtags |= c->tags;
     c = c->next;
   } while (c);
 
-  do {
-    seltag = seltag == 1 ? (1 << (LENGTH(tags) - 1)) : seltag >> 1;
-  } while (!(seltag & usedtags));
+  unsigned int cur = seltag;
+  while (cur > 1) {
+    cur >>= 1;
+    if (cur & usedtags)
+      return cur;
+  }
 
-  return seltag;
+  return seltag; // stop at first tag
 }
 
 void propertynotify(XEvent *e) {
