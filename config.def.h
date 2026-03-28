@@ -8,16 +8,23 @@ static const unsigned int snap = 32;    /* snap pixel */
 static const int showbar = 1;           /* 0 means no bar */
 static const int topbar = 1;            /* 0 means bottom bar */
 static const char *fonts[] = {"FiraCode Nerd Font:size=14"};
-static const char col_gray1[] = "#222222";
-static const char col_gray2[] = "#444444";
-static const char col_gray3[] = "#bbbbbb";
-static const char col_gray4[] = "#eeeeee";
-static const char col_cyan[] = "#005577";
-static const char col_magenta[] = "#8C1946";
+/* custom colors */
+static const char col_bg[] = "#0b0f14";
+static const char col_bg_alt[] = "#121821";
+static const char col_border[] = "#1c2530";
+
+static const char col_fg_dim[] = "#6c7a89";
+static const char col_fg[] = "#d4d4d4";
+
+static const char col_magenta[] = "#7c2f5a";    // main accent
+static const char col_magenta_hi[] = "#a64d79"; // highlight
+
+static const char col_blue[] = "#2a3f5f";
+
 static const char *colors[][3] = {
-    /*               fg         bg         border   */
-    [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
-    [SchemeSel] = {col_gray4, col_magenta, col_magenta},
+    [SchemeNorm] = {col_fg_dim, col_bg, col_border},
+    [SchemeOcc] = {col_fg, col_bg_alt, col_blue},
+    [SchemeSel] = {col_fg, col_magenta, col_magenta_hi},
 };
 
 /* tagging */
