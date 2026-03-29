@@ -21,18 +21,21 @@ static const char *const autostart[] = {
     "sh", "-c",
     "out=$(xrandr | awk '/ primary/{print $1}'); "
     "[ -z \"$out\" ] && out=$(xrandr | awk '/ connected/{print $1; exit}'); "
-    "xrandr --output \"$out\" --mode 1920x1080 --rate 60",
+    "[ -n \"$out\" ] && xrandr --output \"$out\" --mode 1920x1080 --rate 60",
     NULL,
-    /* Daemons (with duplicate protection) */
-    "sh", "-c", "pgrep picom || picom", NULL, "sh", "-c",
-    "pgrep dunst || dunst", NULL, "sh", "-c", "pgrep nm-applet || nm-applet",
-    NULL, "sh", "-c", "pgrep clipmenud || clipmenud", NULL, "sh", "-c",
-    "pgrep slstatus || slstatus", NULL, "sh", "-c",
-    "pgrep libinput-gestures || libinput-gestures", NULL,
+    /* Daemons */
+    "sh", "-c", "pgrep -x picom >/dev/null || picom", NULL, "sh", "-c",
+    "pgrep -x dunst >/dev/null || dunst", NULL, "sh", "-c",
+    "pgrep -x nm-applet >/dev/null || nm-applet", NULL, "sh", "-c",
+    "pgrep -x clipmenud >/dev/null || clipmenud", NULL, "sh", "-c",
+    "pgrep -x slstatus >/dev/null || slstatus", NULL, "sh", "-c",
+    "pgrep -x libinput-gestures >/dev/null || libinput-gestures", NULL,
     /* Input */
     "xset", "r", "rate", "200", "40", NULL,
     /* Wallpaper */
-    "sh", "-c", "[ -f ~/.fehbg ] && ~/.fehbg", NULL, NULL};
+    "sh", "-c", "sleep 0.5; [ -f ~/.fehbg ] && ~/.fehbg", NULL,
+
+    NULL};
 
 /* tagging */
 static const char *tags[] = {"", "",  "", "", "",
