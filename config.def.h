@@ -16,6 +16,24 @@ static const char *colors[][3] = {
     [SchemeSel] = {col_fg, col_bg_sel, col_accent},
 };
 
+static const char *const autostart[] = {
+    /* Display setup */
+    "sh", "-c",
+    "out=$(xrandr | awk '/ primary/{print $1}'); "
+    "[ -z \"$out\" ] && out=$(xrandr | awk '/ connected/{print $1; exit}'); "
+    "xrandr --output \"$out\" --mode 1920x1080 --rate 60",
+    NULL,
+    /* Daemons (with duplicate protection) */
+    "sh", "-c", "pgrep picom || picom", NULL, "sh", "-c",
+    "pgrep dunst || dunst", NULL, "sh", "-c", "pgrep nm-applet || nm-applet",
+    NULL, "sh", "-c", "pgrep clipmenud || clipmenud", NULL, "sh", "-c",
+    "pgrep slstatus || slstatus", NULL, "sh", "-c",
+    "pgrep libinput-gestures || libinput-gestures", NULL,
+    /* Input */
+    "xset", "r", "rate", "200", "40", NULL,
+    /* Wallpaper */
+    "sh", "-c", "[ -f ~/.fehbg ] && ~/.fehbg", NULL, NULL};
+
 /* tagging */
 static const char *tags[] = {"", "",  "", "", "",
                              "", "󰗀", "", "", ""};
