@@ -1340,12 +1340,19 @@ void propertynotify(XEvent *e) {
 
 void quit(const Arg *arg) {
   size_t i;
-  for (i = 0; i < autostart_len; i++) {
-    if (0 < autostart_pids[i]) {
-      kill(autostart_pids[i], SIGTERM);
-      waitpid(autostart_pids[i], NULL, 0);
+
+  if (!arg->i) { // only on actual quit
+    for (i = 0; i < autostart_len; i++) {
+      if (0 < autostart_pids[i]) {
+        kill(autostart_pids[i], SIGTERM);
+        waitpid(autostart_pids[i], NULL, 0);
+      }
     }
   }
+
+  if (arg->i)
+    restart = 1;
+
   running = 0;
 }
 
@@ -2266,9 +2273,11 @@ int main(int argc, char *argv[]) {
 #endif /* __OpenBSD__ */
   scan();
   run();
-  if (restart)
-    execvp(argv[0], argv);
   cleanup();
+  if (restart) {
+    execvp(argv[0], argv);
+    perror("dwm: execvp failed");
+  }
   XCloseDisplay(dpy);
   return EXIT_SUCCESS;
 }

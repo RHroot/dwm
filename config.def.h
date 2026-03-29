@@ -85,20 +85,25 @@ static const Layout layouts[] = {
 
 /* commands */
 static const char *myterminal[] = {"alacritty", NULL};
+static const char *myfilemanager[] = {"nautilus", NULL};
+static const char *mymenu[] = {"rofi", "-show", "run", NULL};
+static const char *mybettermenu[] = {"rofi", "-show", "drun", NULL};
+static const char *mythememenu[] = {"sh", "-c",
+                                    "$HOME/env/nixos/modules/WM/wset", NULL};
 static const char *mybrowserpersonal[] = {"brave",
                                           "--profile-directory=Default", NULL};
 static const char *mybrowserwork[] = {"brave", "--profile-directory=Profile 1",
                                       NULL};
-static const char *mymenu[] = {"rofi", "-show", "run", NULL};
-static const char *mybettermenu[] = {"rofi", "-show", "drun", NULL};
 
 static const Key keys[] = {
     /* modifier                     key        function        argument */
     {MODKEY, XK_Return, spawn, {.v = myterminal}},
     {MODKEY, XK_space, spawn, {.v = mymenu}},
+    {MODKEY, XK_e, spawn, {.v = myfilemanager}},
     {MODKEY | ShiftMask, XK_space, spawn, {.v = mybettermenu}},
     {MODKEY, XK_b, spawn, {.v = mybrowserpersonal}},
     {MODKEY | ShiftMask, XK_b, spawn, {.v = mybrowserwork}},
+    {ControlMask | ShiftMask, XK_space, spawn, {.v = mythememenu}},
     {MODKEY, XK_q, killclient, {0}},
     {MODKEY | ShiftMask, XK_p, togglebar, {0}},
     {MODKEY | ShiftMask, XK_v, spawn, SHCMD("pavucontrol")},
